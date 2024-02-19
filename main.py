@@ -52,7 +52,8 @@ def calculate_reward(events: list[tuple[str, int, int]]) -> dict[str, float]:
       
       for user in users:
         rate = 1/len(users)
-        user_rewards[user] = user_rewards.get(user, 0) + (rate * total_rewards_diff_between_duration)
+        total = user_rewards.get(user, 0) + (rate * total_rewards_diff_between_duration)
+        user_rewards[user] = f"{total:.3f}"
       return user_rewards
 
 events = [("A", 0, 2), ("B", 2, 1), ("A", 10, -1)]
